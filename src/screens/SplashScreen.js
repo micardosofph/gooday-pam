@@ -2,13 +2,19 @@
 
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View, Image } from 'react-native'
-import React from 'react'
+import React, {useEffect} from 'react'
 
-const SplashScreen = () => {
+const SplashScreen = ({navigation}) => {
+    useEffect(() => {
+        setTimeout(() => {
+            navigation.navigate('Welcome');
+        }, 2000);
+    }, []);
+
     return (
         <View style={styles.container}>
             <Image
-                source={require('../assets/logoGooday.png')}
+                source={require('../../assets/logoGooday.png')}
                 style={styles.image}
             />
             <StatusBar style="auto" />
