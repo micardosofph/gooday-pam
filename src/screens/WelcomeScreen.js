@@ -12,7 +12,7 @@ const WelcomeScreen = ({ navigation }) => {
             <Text style={styles.greeting}>Ótimo dia!</Text>
             <Text style={styles.description}>Como deseja acessar?</Text>
             <View>
-                <TouchableOpacity style={[styles.button, styles.button1]}>
+                <TouchableOpacity style={[styles.button, styles.button1]} onPress={() => navigation.navigate('Login')}>
                     <Image
                         source={require('../../assets/Google.png')}
                         style={styles.imageGoogle}

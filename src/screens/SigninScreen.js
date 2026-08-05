@@ -5,8 +5,15 @@ import React from 'react'
 const SigninScreen = ({ navigation }) => {
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Acesse</Text>
-            <Text style={styles.subtitle}>com E-mail e senha</Text>
+            <TouchableOpacity
+                style={styles.backButton}
+                onPress={() => navigation.navigate('Welcome')}
+            >
+                <Image source={require('../../assets/arrow-back-green.png')} />
+            </TouchableOpacity>
+
+            <Text style={styles.title}>Cadastre-se</Text>
+            <Text style={styles.subtitle}>Informe seu E-mail e crie uma senha</Text>
             <View>
                 <Text>E-mail</Text>
                 <TextInput
@@ -15,7 +22,15 @@ const SigninScreen = ({ navigation }) => {
                 />
             </View>
             <View>
-                <Text>Senha</Text>
+                <Text>Crie uma senha</Text>
+                <TextInput
+                    placeholder="Digite sua Senha"
+                    style={styles.input}
+                    secureTextEntry
+                />
+            </View>
+            <View>
+                <Text>Repita a senha</Text>
                 <TextInput
                     placeholder="Digite sua Senha"
                     style={styles.input}
@@ -23,23 +38,9 @@ const SigninScreen = ({ navigation }) => {
                 />
             </View>
 
-            <View style={styles.checkboxAndForgotContainer}>
-                <View style={styles.checkboxContainer}>
-                    <TouchableOpacity style={styles.checkbox}>
-                    </TouchableOpacity>
-                    <Text>Lembrar senha</Text>
-                </View>
-                <TouchableOpacity>
-                    <Text>Esqueci minha senha</Text>
-                </TouchableOpacity>
-            </View>
-
             <View style={styles.buttonsContainer}>
-                <TouchableOpacity style={[styles.button, styles.button1]}>
-                    <Text style={styles.buttonText1}>Acessar</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={[styles.button, styles.button2]} onPress={() => navigation.navigate('Signin')}>
-                    <Text style={styles.buttonText2}>Cadastrar</Text>
+                <TouchableOpacity style={[styles.button, styles.button1]} onPress={() => navigation.navigate('LiveGood')}>
+                    <Text style={styles.buttonText1}>Cadastrar</Text>
                 </TouchableOpacity>
             </View>
 
@@ -66,6 +67,11 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         padding: 32,
+        paddingTop: 64,
+    },
+    backButton: {
+        width: 32,
+        height: 32,
     },
     title: {
         fontSize: 40,
@@ -82,6 +88,7 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         paddingHorizontal: 16,
         marginBottom: 20,
+        height: 72,
     },
     checkbox: {
         borderWidth: 1,
@@ -125,7 +132,9 @@ const styles = StyleSheet.create({
     button: {
         flex: 1,
         padding: 16,
-        borderRadius: 4,
+        borderRadius: 8,
+        height: 72,
+        justifyContent: 'center',
     },
 
     button1: {
@@ -148,7 +157,7 @@ const styles = StyleSheet.create({
     line: {
         height: 1,
         width: 100,
-        backgroundColor: '#000',
+        backgroundColor: '#00000046',
     },
     lineContainer: {
         flexDirection: 'row',
