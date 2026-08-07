@@ -1,8 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 
 const LoginScreen = ({ navigation }) => {
+    const [showPassword, setShowPassword] = useState(false);
+
     return (
         <View style={styles.container}>
             <TouchableOpacity
@@ -23,11 +25,27 @@ const LoginScreen = ({ navigation }) => {
             </View>
             <View>
                 <Text>Senha</Text>
-                <TextInput
-                    placeholder="Digite sua Senha"
-                    style={styles.input}
-                    secureTextEntry
-                />
+                <View style={styles.inputWrapper}>
+
+                    <TextInput
+                        placeholder="Digite sua Senha"
+                        style={styles.input}
+                        secureTextEntry={!showPassword}
+                    />
+                    <TouchableOpacity
+                        style={styles.buttonShowPassword}
+                        onPress={() => setShowPassword(!showPassword)}
+                    >
+                        <Image
+                            source={
+                                showPassword
+                                    ? require('../../assets/visibility_on.png')
+                                    : require('../../assets/visibility_off.png')
+                            }
+                            style={styles.icone}
+                        />
+                    </TouchableOpacity>
+                </View>
             </View>
 
             <View style={styles.checkboxAndForgotContainer}>
@@ -88,6 +106,11 @@ const styles = StyleSheet.create({
         color: '#666',
         marginBottom: 32,
     },
+    inputWrapper: {
+        width: '100%',
+        position: 'relative',
+        justifyContent: 'center',
+    },
     input: {
         backgroundColor: '#ebebeb',
         borderRadius: 4,
@@ -95,6 +118,13 @@ const styles = StyleSheet.create({
         paddingHorizontal: 16,
         marginBottom: 20,
         height: 72,
+    },
+    buttonShowPassword:{
+        position: 'absolute',
+        right: 12,
+        height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     checkbox: {
         borderWidth: 1,
